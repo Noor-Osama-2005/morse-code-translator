@@ -4,26 +4,32 @@ import customtkinter
 
 
 def switch(*args):
-    mm = var.get().replace(" / ", " ").replace(".----. ", "'").replace("_... ", "b").replace(
-        "_._. ", "c").replace(".._. ", "f").replace(".... ", "h").replace(
-        ".___ ", "j").replace("._.. ", "l").replace(
-        ".__. ", "p").replace("__._ ", "q").replace("._. ", "r").replace("... ", "s").replace("..._ ", "v").replace("_.._ ", "x").replace("_.__ ", "y").replace(
-        "__.. ", "z").replace(".__ ", "w").replace("___ ", "o").replace("__. ", "g").replace("_._ ", "k").replace("_.. ", "d").replace(".._ ", "u").replace("._ ", "a").replace("__ ", "m").replace("_. ", "n").replace(".. ", "i").replace("_ ", "t").replace(". ", "e")
+    ko = var.get() + " "
+    mm = ko.replace("/ ", " ").replace(".----. ", "'").replace("-... ", "b").replace(
+        "-.-. ", "c").replace("..-. ", "f").replace(".... ", "h").replace(
+        ".--- ", "j").replace(".-.. ", "l").replace(
+        ".--. ", "p").replace("--.- ", "q").replace(".-. ", "r").replace("... ", "s").replace("...- ", "v").replace(
+        "-..- ", "x").replace("-.-- ", "y").replace(
+        "--.. ", "z").replace(".-- ", "w").replace("--- ", "o").replace("--. ", "g").replace("-.- ", "k").replace(
+        "-.. ", "d").replace("..- ", "u").replace(".- ", "a").replace("-- ", "m").replace("-. ", "n").replace(".. ",
+                                                                                                              "i").replace(
+        "- ", "t").replace(". ", "e")
     output.config()
     output.delete(0, END)
     output.insert(0, mm)
 
 
 def change_label(*args):
-    n = var.get().replace(" ", " / ").replace("'", ".----. ").replace("d", "_.. ").replace("a", "._ ").replace("b",
-                                                                                                               "_... ").replace(
-        "c", "_._. ").replace("e", ". ").replace("f", ".._. ").replace("g", "__. ").replace("h", ".... ").replace("i",
+    bo = var.get().lower()
+    n = bo.replace(" ", "/ ").replace("'", ".----. ").replace("d", "-.. ").replace("a", ".- ").replace("b",
+                                                                                                       "-... ").replace(
+        "c", "-.-. ").replace("e", ". ").replace("f", "..-. ").replace("g", "--. ").replace("h", ".... ").replace("i",
                                                                                                                   ".. ").replace(
-        "j", ".___ ").replace("k", "_._ ").replace("l", "._.. ").replace("m", "__ ").replace("n", "_. ").replace("p",
-                                                                                                                 ".__. ").replace(
-        "o", "___ ").replace("q", "__._ ").replace("r", "._. ").replace("s", "... ").replace("t", "_ ").replace("u",
-                                                                                                                ".._ ").replace(
-        "v", "..._ ").replace("w", ".__ ").replace("x", "_.._ ").replace("y", "_.__ ").replace("z", "__.. ")
+        "j", ".--- ").replace("k", "-.- ").replace("l", ".-.. ").replace("m", "-- ").replace("n", "-. ").replace("p",
+                                                                                                                 ".--. ").replace(
+        "o", "--- ").replace("q", "--.- ").replace("r", ".-. ").replace("s", "... ").replace("t", "- ").replace("u",
+                                                                                                                "..- ").replace(
+        "v", "...- ").replace("w", ".-- ").replace("x", "-..- ").replace("y", "-.-- ").replace("z", "--.. ")
     output.config()
     output.delete(0, END)
     output.insert(0, n)
@@ -59,6 +65,7 @@ def change():
 customtkinter.set_appearance_mode("dark")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
+
 def change_mode():
     if switch_2.get() == 1:
         customtkinter.set_appearance_mode("dark")
@@ -66,7 +73,7 @@ def change_mode():
         customtkinter.set_appearance_mode("light")
 
 
-
+font = "Libre Baskerville"
 te = "Text to morse code:"
 root = customtkinter.CTk()
 root.geometry("700x500")
@@ -77,26 +84,26 @@ var = StringVar()
 hole = var.trace('w', cl)
 frame_1 = customtkinter.CTkFrame(master=root)
 frame_1.pack(pady=20, padx=60, fill="both", expand=True)
-title = customtkinter.CTkLabel(master=frame_1, text="Morse code translator", text_font=("Roboto Medium", 28))
+title = customtkinter.CTkLabel(master=frame_1, text="Morse code translator", text_font=(font, 28))
 title.pack(pady=20, padx=60)
 input_box = customtkinter.CTkEntry(master=frame_1, textvariable=var, width=600)
 output = customtkinter.CTkEntry(master=frame_1, width=600, fg="red")
-put = customtkinter.CTkLabel(master=frame_1, text="input:", text_font=("Roboto Medium", 20))
+put = customtkinter.CTkLabel(master=frame_1, text="Input:", text_font=(font, 20))
 put.pack(pady=10, padx=60)
 input_box.pack(pady=5, padx=10)
-out = customtkinter.CTkLabel(master=frame_1, text="output:", text_font=("Roboto Medium", 20))
+out = customtkinter.CTkLabel(master=frame_1, text="Output:", text_font=(font, 20))
 out.pack(pady=10, padx=10)
 output.pack(pady=5, padx=10)
 
-info = customtkinter.CTkLabel(master=frame_1, text="morse code translator\nmade by noor osama")
+info = customtkinter.CTkLabel(master=frame_1, text="Morse code translator\nMade by Noor Osama")
 info.place(x=220, y=385)
-face = customtkinter.CTkButton(master=root, text="facebook", command=facebook)
+face = customtkinter.CTkButton(master=root, text="Facebook", command=facebook)
 face.pack(padx=5, pady=5)
-reverse = customtkinter.CTkButton(master=frame_1, text="reverse operation", command=change)
+reverse = customtkinter.CTkButton(master=frame_1, text="Reverse operation", command=change)
 reverse.place(x=221, y=300)
-op = customtkinter.CTkLabel(master=frame_1, text=te, text_font=("Roboto Medium", 11))
+op = customtkinter.CTkLabel(master=frame_1, text=te, text_font=(font, 11))
 op.place(x=0, y=110)
 switch_2 = customtkinter.CTkSwitch(master=frame_1, text="Dark Mode", command=change_mode)
-switch_2.place(x=5, y=400)
+switch_2.place(x=10, y=400)
 switch_2.select()
 root.mainloop()
