@@ -1,11 +1,11 @@
-from tkinter import *
+import tkinter
 import webbrowser
 import customtkinter
 
 
 def switch(*args):
     ko = var.get() + " "
-    mm = ko.replace("/ ", " ").replace(".----. ", "'").replace("-... ", "b").replace(
+    mm = ko.replace("_", "-").replace("/ ", " ").replace(".----. ", "'").replace("-... ", "b").replace(
         "-.-. ", "c").replace("..-. ", "f").replace(".... ", "h").replace(
         ".--- ", "j").replace(".-.. ", "l").replace(
         ".--. ", "p").replace("--.- ", "q").replace(".-. ", "r").replace("... ", "s").replace("...- ", "v").replace(
@@ -15,7 +15,7 @@ def switch(*args):
                                                                                                               "i").replace(
         "- ", "t").replace(". ", "e")
     output.config()
-    output.delete(0, END)
+    output.delete(0, tkinter.END)
     output.insert(0, mm)
 
 
@@ -31,7 +31,7 @@ def change_label(*args):
                                                                                                                 "..- ").replace(
         "v", "...- ").replace("w", ".-- ").replace("x", "-..- ").replace("y", "-.-- ").replace("z", "--.. ")
     output.config()
-    output.delete(0, END)
+    output.delete(0, tkinter.END)
     output.insert(0, n)
 
 
@@ -47,7 +47,7 @@ def change():
     global cl, var, hole, te
     try:
         var.trace_vdelete("w", hole)
-    except (TclError, NameError):
+    except (tkinter.TclError, NameError):
         pass
     if cl == switch:
         cl = change_label
@@ -80,7 +80,7 @@ root.geometry("700x500")
 root.title("Morse code translator")
 root.resizable(False, False)
 root.iconbitmap("mt.ico")
-var = StringVar()
+var = tkinter.StringVar()
 hole = var.trace('w', cl)
 frame_1 = customtkinter.CTkFrame(master=root)
 frame_1.pack(pady=20, padx=60, fill="both", expand=True)
